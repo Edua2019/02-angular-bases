@@ -8,10 +8,16 @@ export class heroPageComponent{
   name = signal('Ironman');
   age = signal(45);
 
+  heroDesciption = computed(() => {
+    const description = `${this.name()} - ${this.age()}`;
+    return description;
+  })
+
   /* Concatenamos el nombre con la edad */
+  /*
   getHeroDescription(){
     return `${this.name()} - ${this.age()}`;
-  }
+  }*/
 
   /* Le cambiamos el valor a todas la señales */
   changeHero(){
