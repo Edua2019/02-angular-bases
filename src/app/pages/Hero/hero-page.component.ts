@@ -1,7 +1,9 @@
+import { UpperCasePipe } from "@angular/common";
 import { Component, computed, signal } from "@angular/core";
 
 @Component({
-  templateUrl: './hero-page.component.html'
+  templateUrl: './hero-page.component.html',
+  imports: [UpperCasePipe]
 })
 export class heroPageComponent{
 
@@ -12,6 +14,8 @@ export class heroPageComponent{
     const description = `${this.name()} - ${this.age()}`;
     return description;
   })
+
+  capitalizedName = computed(() => this.name().toLocaleUpperCase());
 
   /* Concatenamos el nombre con la edad */
   /*
