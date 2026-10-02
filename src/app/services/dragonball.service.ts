@@ -1,6 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { Character } from '../interfaces/character.interfaces';
 
+/* El Injectable es un decorador que convierte mi clase en un servicio inyectable */
 @Injectable({providedIn: 'root'})
 export class DragonballService {
 
