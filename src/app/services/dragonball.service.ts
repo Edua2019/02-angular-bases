@@ -1,14 +1,17 @@
 import { effect, Injectable, signal } from '@angular/core';
 import { Character } from '../interfaces/character.interfaces';
 
+const loadFromLocalStorage = (): Character[] =>{
+  const characters = localStorage.getItem('characters');
+
+  return characters ? JSON.parse(characters) : [];
+}
+
 /* El Injectable es un decorador que convierte mi clase en un servicio inyectable */
 @Injectable({providedIn: 'root'})
 export class DragonballService {
 
-  characters = signal<Character[]>([
-    {id: 1, name: 'Goku', power: 9001},
-    {id: 2, name: 'Vegeta', power: 8000}
-  ]);
+  characters = signal<Character[]>( loadFromLocalStorage() );
 
   /*
     Los efectos secundarios se manejan con signals y sirven para actualizar el estado de manera reactiva
